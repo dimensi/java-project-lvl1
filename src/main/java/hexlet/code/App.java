@@ -5,6 +5,7 @@ import hexlet.code.games.Game;
 import hexlet.code.games.GcdGame;
 import hexlet.code.games.GreetGame;
 import hexlet.code.games.EvenGame;
+import hexlet.code.games.ProgressionGame;
 
 import java.util.Scanner;
 
@@ -15,6 +16,7 @@ public class App {
         new EvenGame(),
         new CalcGame(),
         new GcdGame(),
+        new ProgressionGame(),
     };
     public static void main(String[] args) {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println("Goodbye!")));

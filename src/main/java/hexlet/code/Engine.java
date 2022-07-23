@@ -2,6 +2,7 @@ package hexlet.code;
 
 import hexlet.code.games.Game;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public final class Engine {
@@ -38,5 +39,9 @@ public final class Engine {
             }
         }
         return true;
+    }
+
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
     }
 }

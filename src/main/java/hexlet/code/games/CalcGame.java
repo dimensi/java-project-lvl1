@@ -2,8 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public final class CalcGame implements Game {
     private final Engine gameEngine = new Engine();
 
@@ -39,9 +37,9 @@ public final class CalcGame implements Game {
     }
 
     public boolean askQuestion() {
-        var firstOperand = ThreadLocalRandom.current().nextInt(RANDOM_MIN_INT, RANDOM_MAX_INT + 1);
-        var secondOperand = ThreadLocalRandom.current().nextInt(RANDOM_MIN_INT, RANDOM_MAX_INT + 1);
-        var operationIdx = ThreadLocalRandom.current().nextInt(0, OPERATIONS.length);
+        var firstOperand = gameEngine.getRandomNumber(RANDOM_MIN_INT, RANDOM_MAX_INT);
+        var secondOperand = gameEngine.getRandomNumber(RANDOM_MIN_INT, RANDOM_MAX_INT);
+        var operationIdx = gameEngine.getRandomNumber(0, OPERATIONS.length - 1);
         int operation = OPERATIONS[operationIdx];
         int rightAnswer;
         String question;

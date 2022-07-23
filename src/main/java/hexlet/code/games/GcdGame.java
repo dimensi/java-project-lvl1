@@ -2,8 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public final class GcdGame implements Game {
     private final Engine gameEngine = new Engine();
 
@@ -45,8 +43,8 @@ public final class GcdGame implements Game {
         }
     }
     public boolean askQuestion() {
-        var a = ThreadLocalRandom.current().nextInt(RANDOM_MIN_INT, RANDOM_MAX_INT + 1);
-        var b = ThreadLocalRandom.current().nextInt(RANDOM_MIN_INT, RANDOM_MAX_INT + 1);
+        var a = gameEngine.getRandomNumber(RANDOM_MIN_INT, RANDOM_MAX_INT);
+        var b = gameEngine.getRandomNumber(RANDOM_MIN_INT, RANDOM_MAX_INT);
         var rightAnswer = findGCD(a, b);
         System.out.printf("Question: %s %s%n", a, b);
         var answer = gameEngine.getScanner().nextInt();

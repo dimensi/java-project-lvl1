@@ -2,8 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public final class EvenGame implements Game {
 
     private final Engine gameEngine = new Engine();
@@ -30,7 +28,7 @@ public final class EvenGame implements Game {
         }
     }
     public boolean askQuestion() {
-        var randomNum = ThreadLocalRandom.current().nextInt(RANDOM_MIN_INT, RANDOM_MAX_INT + 1);
+        var randomNum = gameEngine.getRandomNumber(RANDOM_MIN_INT, RANDOM_MAX_INT);
         var isEven = randomNum % 2 == 0;
         var rightAnswer = isEven ? "yes" : "no";
 
