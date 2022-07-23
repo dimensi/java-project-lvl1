@@ -1,16 +1,16 @@
 package hexlet.code.games;
 
+import hexlet.code.Calc;
 import hexlet.code.Engine;
+
+import static hexlet.code.Calc.OPERATIONS;
 
 public final class CalcGame implements Game {
     private final Engine gameEngine = new Engine();
 
     public static final int RANDOM_MAX_INT = 20;
     public static final int RANDOM_MIN_INT = 0;
-    public static final int PLUS_OPERATION = 1;
-    public static final int MINUS_OPERATION = 2;
-    public static final int MULTIPLY_OPERATION = 3;
-    public static final int[] OPERATIONS = {PLUS_OPERATION, MINUS_OPERATION, MULTIPLY_OPERATION};
+
 
 //    private int operationStartIdx = ThreadLocalRandom.current().nextInt(0, OPERATIONS.length);
 
@@ -32,42 +32,25 @@ public final class CalcGame implements Game {
         }
     }
 
-    private String formatQuestion(int first, int second, String operation) {
-        return String.format("%s %s %s", first, operation, second);
-    }
+
 
     public boolean askQuestion() {
         var firstOperand = gameEngine.getRandomNumber(RANDOM_MIN_INT, RANDOM_MAX_INT);
         var secondOperand = gameEngine.getRandomNumber(RANDOM_MIN_INT, RANDOM_MAX_INT);
         var operationIdx = gameEngine.getRandomNumber(0, OPERATIONS.length - 1);
         int operation = OPERATIONS[operationIdx];
-        int rightAnswer;
-        String question;
-        switch (operation) {
-            case PLUS_OPERATION:
-            default:
-                rightAnswer = firstOperand + secondOperand;
-                question = formatQuestion(firstOperand, secondOperand, "+");
-                break;
-            case MINUS_OPERATION:
-                rightAnswer = firstOperand - secondOperand;
-                question = formatQuestion(firstOperand, secondOperand, "-");
-                break;
-            case MULTIPLY_OPERATION:
-                rightAnswer = firstOperand * secondOperand;
-                question = formatQuestion(firstOperand, secondOperand, "*");
-                break;
-        }
+        var calc = new Calc(firstOperand, secondOperand, operation);
 
-        gameEngine.sayQuestion(question);
+
+        gameEngine.sayQuestion(calc.getQuestion());
         var answer = gameEngine.getScanner().nextInt();
         gameEngine.sayYourAnswer(answer);
-        if (answer == rightAnswer) {
+        if (answer == calc.getAnswer()) {
             gameEngine.sayCorrect();
             return true;
         }
 
-        gameEngine.sayWrong(answer, rightAnswer);
+        gameEngine.sayWrong(answer, calc.getAnswer());
         return false;
     }
 }
