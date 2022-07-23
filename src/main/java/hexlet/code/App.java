@@ -2,6 +2,7 @@ package hexlet.code;
 
 import hexlet.code.games.CalcGame;
 import hexlet.code.games.Game;
+import hexlet.code.games.GcdGame;
 import hexlet.code.games.GreetGame;
 import hexlet.code.games.EvenGame;
 
@@ -13,6 +14,7 @@ public class App {
         new GreetGame(),
         new EvenGame(),
         new CalcGame(),
+        new GcdGame(),
     };
     public static void main(String[] args) {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println("Goodbye!")));

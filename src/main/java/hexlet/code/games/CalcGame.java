@@ -61,9 +61,9 @@ public final class CalcGame implements Game {
                 break;
         }
 
-        System.out.printf("Question: %s,%n", question);
+        System.out.printf("Question: %s%n", question);
         var answer = gameEngine.getScanner().nextInt();
-        System.out.printf("Your answer: %s,%n", answer);
+        System.out.printf("Your answer: %s%n", answer);
         if (answer == rightAnswer) {
             System.out.println("Correct!");
             return true;
