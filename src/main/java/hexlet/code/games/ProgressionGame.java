@@ -58,7 +58,7 @@ public final class ProgressionGame implements Game {
     public boolean askQuestion() {
         var progression = generateProgression();
         var idx = gameEngine.getRandomNumber(RANDOM_MIN_INT, progression.length - 1);
-        var rightAnswer = progression[1] - progression[0];
+        var rightAnswer = progression[idx];
         gameEngine.sayQuestion(generateQuestion(progression, idx));
         var answer = gameEngine.getScanner().nextInt();
         gameEngine.sayYourAnswer(answer);
