@@ -46,15 +46,15 @@ public final class GcdGame implements Game {
         var a = gameEngine.getRandomNumber(RANDOM_MIN_INT, RANDOM_MAX_INT);
         var b = gameEngine.getRandomNumber(RANDOM_MIN_INT, RANDOM_MAX_INT);
         var rightAnswer = findGCD(a, b);
-        System.out.printf("Question: %s %s%n", a, b);
+        gameEngine.sayQuestion(String.format("%s %s", a, b));
         var answer = gameEngine.getScanner().nextInt();
-        System.out.printf("Your answer: %s%n", answer);
+        gameEngine.sayYourAnswer(answer);
         if (answer == rightAnswer) {
-            System.out.println("Correct!");
+            gameEngine.sayCorrect();
             return true;
         }
 
-        System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.%n", answer, rightAnswer);
+        gameEngine.sayWrong(answer, rightAnswer);
         return false;
     }
 }

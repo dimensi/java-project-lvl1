@@ -58,15 +58,15 @@ public final class ProgressionGame implements Game {
         var progression = generateProgression();
         var idx = gameEngine.getRandomNumber(RANDOM_MIN_INT, progression.length - 1);
         var rightAnswer = progression[1] - progression[0];
-        System.out.printf("Question: %s%n", generateQuestion(progression, idx));
+        gameEngine.sayQuestion(generateQuestion(progression, idx));
         var answer = gameEngine.getScanner().nextInt();
-        System.out.printf("Your answer: %s%n", answer);
+        gameEngine.sayYourAnswer(answer);
         if (answer == rightAnswer) {
-            System.out.println("Correct!");
+            gameEngine.sayCorrect();
             return true;
         }
 
-        System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.%n", answer, rightAnswer);
+        gameEngine.sayWrong(answer, rightAnswer);
         return false;
     }
 }
