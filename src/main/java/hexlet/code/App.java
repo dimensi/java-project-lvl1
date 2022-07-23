@@ -22,8 +22,6 @@ public class App {
         if (answer != 0 && answer <= GAMES.length) {
             var game = GAMES[answer - 1];
             game.start();
-        } else {
-            System.out.println("Goodbye!");
         }
         System.exit(0);
     }
