@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.games.CalcGame;
 import hexlet.code.games.Game;
 import hexlet.code.games.GreetGame;
 import hexlet.code.games.EvenGame;
@@ -11,6 +12,7 @@ public class App {
     public static final Game[] GAMES = {
         new GreetGame(),
         new EvenGame(),
+        new CalcGame(),
     };
     public static void main(String[] args) {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println("Goodbye!")));

@@ -2,15 +2,11 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
-
-import static hexlet.code.Engine.MAX_ANSWERS;
 
 public final class EvenGame implements Game {
 
     private final Engine gameEngine = new Engine();
-    private final Scanner sc = new Scanner(System.in);
 
     public static final int RANDOM_MAX_INT = 100;
     public static final int RANDOM_MIN_INT = 1;
@@ -22,29 +18,26 @@ public final class EvenGame implements Game {
 
     public void start() {
         gameEngine.welcomePlayer();
-
-        String name = gameEngine.askName();
+        gameEngine.askName();
 
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
-        for (var i = 0; i < MAX_ANSWERS; i++) {
-            if (askQuestion()) {
-                System.out.println("Correct!");
-            } else {
-                System.out.printf("Let's try again, %s!%n", name);
-                return;
-            }
+        var isSuccess = gameEngine.startAskQuestions(this);
+        if (isSuccess) {
+            gameEngine.goodbyeSuccessPlayer();
+        } else {
+            gameEngine.goodbyeFailPlayer();
         }
-        System.out.printf("Congratulations, %s!%n", name);
     }
-    private boolean askQuestion() {
+    public boolean askQuestion() {
         var randomNum = ThreadLocalRandom.current().nextInt(RANDOM_MIN_INT, RANDOM_MAX_INT + 1);
         var isEven = randomNum % 2 == 0;
         var rightAnswer = isEven ? "yes" : "no";
 
         System.out.printf("Question: %s%n", randomNum);
-        var answer = sc.next();
+        var answer = gameEngine.getScanner().nextLine();
         if (answer.trim().equals(rightAnswer)) {
+            System.out.println("Correct!");
             return true;
         }
 

@@ -13,4 +13,8 @@ public final class GreetGame implements Game {
         gameEngine.welcomePlayer();
         gameEngine.askName();
     }
+
+    public boolean askQuestion() {
+        return false;
+    }
 }
