@@ -2,6 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Calc;
 import hexlet.code.Engine;
+import hexlet.code.Game;
 
 import static hexlet.code.Calc.OPERATIONS;
 

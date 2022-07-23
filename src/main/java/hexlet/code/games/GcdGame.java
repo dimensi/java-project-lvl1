@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Game;
 
 public final class GcdGame implements Game {
     private final Engine gameEngine = new Engine();

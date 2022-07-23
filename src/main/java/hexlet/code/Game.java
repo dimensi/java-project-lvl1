@@ -1,4 +1,4 @@
-package hexlet.code.games;
+package hexlet.code;
 
 public interface Game {
     String getGameName();
